@@ -69,7 +69,7 @@ getter('e','e1');        // => throws an Error exception
 * param `{Object}` **options** *(optional)*:
   * `{Boolean}` **failOnNotFound**: Whether to throw an `Error` if the searched path does not exist in the object structure (default: `false`).
 
-Returns a function (`getter`).
+Returns a `getter` function.
 
 ### `getter(a,b,c)`
 
