@@ -39,24 +39,24 @@ var myObject = {
 
 var getter = args2object(myObject);
 
-getter('a'));             // => true
-getter('b'));             // => false
-getter('c'));             // => 'hello'
-getter('d','d1'));        // => 'foo'
-getter('d','d2'));        // => [1,2,3,4]
+getter('a');             // => true
+getter('b');             // => false
+getter('c');             // => 'hello'
+getter('d','d1');        // => 'foo'
+getter('d','d2');        // => [1,2,3,4]
 
-getter('a','a1'));        // => undefined
-getter('a','a1','a11'));  // => undefined
-getter('e'));             // => undefined
-getter('e','e1'));        // => undefined
+getter('a','a1');        // => undefined
+getter('a','a1','a11');  // => undefined
+getter('e');             // => undefined
+getter('e','e1');        // => undefined
 
 
-var getter = args2object(object, {failOnNotFound: true});
+var getter = args2object(myObject, {failOnNotFound: true});
 
-getter('a','a1'));        // => throws an Error exception
-getter('a','a1','a11'));  // => throws an Error exception
-getter('e'));             // => throws an Error exception
-getter('e','e1'));        // => throws an Error exception
+getter('a','a1');        // => throws an Error exception
+getter('a','a1','a11');  // => throws an Error exception
+getter('e');             // => throws an Error exception
+getter('e','e1');        // => throws an Error exception
 
 ```
 
