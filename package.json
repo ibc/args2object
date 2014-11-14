@@ -1,0 +1,25 @@
+{
+  "name": "args2object",
+  "version": "0.1.0",
+  "description": "Node/JavaScript library to access an item in an object structure given function arguments as path.",
+  "author": "Iñaki Baz Castillo <ibc@aliax.net>",
+  "license": "MIT",
+  "main": "lib/args2object.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "homepage": "https://github.com/ibc/args2object",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibc/args2object.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ibc/args2object/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-browserify": "~3.1.0"
+  }
+}
