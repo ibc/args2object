@@ -15,7 +15,20 @@ var object = {
         }
       }
     }
-  }
+  },
+  f: undefined,
+  g: null,
+  undefined: 666,
+  null: {
+    true: 1,
+    false: -1,
+    null: 0,
+    undefined: -1000
+  },
+  0: {
+    0: '0'
+  },
+  1: '1',
 };
 
 
@@ -23,10 +36,6 @@ module.exports = {
   'validate input': function(test) {
     test.throws(function() { args2object(); });
     test.throws(function() { args2object(false); });
-    test.throws(function() {
-      var getter = args2object(object);
-      getter();
-    });
 
     test.done();
   },
@@ -34,6 +43,7 @@ module.exports = {
   'existing items': function(test) {
     var getter = args2object(object);
 
+    test.deepEqual(object, getter());
     test.strictEqual(true, getter('a'));
     test.strictEqual(false, getter('b'));
     test.strictEqual('hello', getter('c'));
@@ -41,6 +51,17 @@ module.exports = {
     test.strictEqual('foo', getter('d','d1'));
     test.deepEqual([1,2,3,4], getter('d','d2'));
     test.strictEqual('here', getter('e','e1','e2','e3','e4'));
+    test.strictEqual(undefined, getter('f'));
+    test.strictEqual(null, getter('g'));
+    test.strictEqual(666, getter(undefined));
+    test.strictEqual(1, getter(null,true));
+    test.strictEqual(-1, getter(null,false));
+    test.strictEqual(0, getter(null,null));
+    test.strictEqual(-1000, getter(null,undefined));
+    test.strictEqual('0', getter(0,0));
+    test.strictEqual('0', getter('0','0'));
+    test.strictEqual('1', getter(1));
+    test.strictEqual('1', getter('1'));
 
     test.done();
   },
@@ -51,6 +72,13 @@ module.exports = {
     test.strictEqual(undefined, getter('a','a1'));
     test.strictEqual(undefined, getter('f'));
     test.strictEqual(undefined, getter('f','f1','f2'));
+    test.strictEqual(undefined, getter('h'));
+    test.strictEqual(undefined, getter('g','g1'));
+    test.strictEqual(undefined, getter(null,null,null));
+    test.strictEqual(undefined, getter(0,1));
+    test.strictEqual(undefined, getter('0','1'));
+    test.strictEqual(undefined, getter(2));
+    test.strictEqual(undefined, getter('2'));
 
     test.done();
   },
@@ -59,8 +87,15 @@ module.exports = {
     var getter = args2object(object, {failOnNotFound: true});
 
     test.throws(function() { getter('a','a1'); });
-    test.throws(function() { getter('f'); });
+    test.doesNotThrow(function() { getter('f'); });
     test.throws(function() { getter('f','f1','f2'); });
+    test.doesNotThrow(function() { getter('g'); });
+    test.throws(function() { getter('h'); });
+    test.throws(function() { getter(null,null,null); });
+    test.throws(function() { getter(0,1); });
+    test.throws(function() { getter('0','1'); });
+    test.throws(function() { getter(2); });
+    test.throws(function() { getter('2'); });
 
     test.done();
   }

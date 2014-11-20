@@ -50,6 +50,8 @@ getter('a','a1','a11');  // => undefined
 getter('e');             // => undefined
 getter('e','e1');        // => undefined
 
+detter();                // => the full object
+
 
 var getter = args2object(myObject, {failOnNotFound: true});
 
@@ -79,6 +81,9 @@ If the path does not exist it returns `undefined` (or throws an `Error` if `opti
 
 
 ## Release History
+
+### 0.1.1 (2014-11-20)
+* Make it much more robust and allow retrieving the full object.
 
 ### 0.1.0 (2014-11-14)
 * First release.
