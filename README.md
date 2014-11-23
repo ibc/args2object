@@ -33,6 +33,10 @@ var myObject = {
   d: {
     d1: 'foo',
     d2: [1,2,3,4]
+  },
+  true: {
+    false: 0,
+    bar: null
   }
 };
 
@@ -44,13 +48,16 @@ getter('b');             // => false
 getter('c');             // => 'hello'
 getter('d','d1');        // => 'foo'
 getter('d','d2');        // => [1,2,3,4]
+getter(true,false);      // => 0
+getter(true,'bar');      // => null
 
 getter('a','a1');        // => undefined
 getter('a','a1','a11');  // => undefined
 getter('e');             // => undefined
 getter('e','e1');        // => undefined
+getter(null,true,false); // => undefined
 
-detter();                // => the full object
+getter();                // => the full object
 
 
 var getter = args2object(myObject, {failOnNotFound: true});
@@ -59,7 +66,7 @@ getter('a','a1');        // => throws an Error exception
 getter('a','a1','a11');  // => throws an Error exception
 getter('e');             // => throws an Error exception
 getter('e','e1');        // => throws an Error exception
-
+getter(false);           // => throws an Error exception
 ```
 
 
