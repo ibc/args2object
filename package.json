@@ -1,6 +1,6 @@
 {
   "name": "args2object",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Node/JavaScript library to access an item in an object structure given function arguments as path.",
   "author": "Iñaki Baz Castillo <ibc@aliax.net>",
   "license": "MIT",
