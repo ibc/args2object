@@ -89,6 +89,10 @@ If the path does not exist it returns `undefined` (or throws an `Error` if `opti
 
 ## Release History
 
+### 0.1.2 (2014-11-23)
+
+* Improve examples in README.
+
 ### 0.1.1 (2014-11-20)
 * Make it much more robust and allow retrieving the full object.
 
